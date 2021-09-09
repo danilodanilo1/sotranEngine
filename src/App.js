@@ -1,24 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import MenuLateral from './Components/MenuLateral';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+} from "react-router-dom";
+import ScrapEngine from './Components/ScrapEngine';
+import Parametros from './Components/Parametros';
+import Login from './Components/Login';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Switch>
+          <Route path="/" exact component={Login}/>
+          <Route path="/scrap-engine" exact>
+            <MenuLateral/>
+            <ScrapEngine title={"Engine - Gerador de busca"}/>
+          </Route>
+          <Route path="/parametros" exact >
+            <MenuLateral/>
+            <Parametros/>
+          </Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
